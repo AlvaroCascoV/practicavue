@@ -35,4 +35,24 @@ export default class ServiceApuestas {
 			});
 		});
 	}
+	getApuestas() {
+		return new Promise(function (resolve) {
+			let request = 'api/Apuestas';
+			let url = Global.urlApuestas + request;
+			let apuestas = [];
+			axios.get(url).then((response) => {
+				apuestas = response.data;
+				resolve(apuestas);
+			});
+		});
+	}
+	insertApuesta(apuesta) {
+		return new Promise(function (resolve) {
+			let request = 'api/Apuestas';
+			let url = Global.urlApuestas + request;
+			axios.post(url, apuesta).then((response) => {
+				resolve(response.data);
+			});
+		});
+	}
 }
