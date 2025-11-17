@@ -24,4 +24,15 @@ export default class ServiceApuestas {
 			});
 		});
 	}
+	findJugador(id) {
+		return new Promise(function (resolve) {
+			let request = 'api/Jugadores/' + id;
+			let url = Global.urlApuestas + request;
+			let jugador = [];
+			axios.get(url).then((response) => {
+				jugador = response.data;
+				resolve(jugador);
+			});
+		});
+	}
 }
